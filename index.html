@@ -1,5 +1,44 @@
 <!DOCTYPE html>
-<div class="jumbotron text-center">
+<style>
+    h1 {
+        font-family: sans-serif;
+        color: black;
+        font-size: 250%;
+        text-align: center;
+        padding-top: 50px;
+    }
+    p {
+        color: teal;
+        font-family: sans-serif;
+        font-size: 140%;
+        text-align: center;
+        padding-bottom: 50px;
+    }
+    p1 {
+        color: black;
+        font-family: sans-serif;
+        text-align: center;
+    }
+</style>
+
+
+<body>
+<script>
+    var i = 0;
+    var text = "insert text about me";
+    function typing() {
+        if (i < text.length) {
+            document.getElementById("intro").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, 70);
+        }
+    }
+</script>
+<div class="center_text" style="background-color:lightcoral">
     <h1> Sophie Smith </h1>
-    <p> insert text about me </p>
+    <p id="intro"><script> typing()</script></p>
 </div>
+<div class="main">
+    <p1> About Me. </p1>
+</div>
+</body>
