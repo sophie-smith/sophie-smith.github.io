@@ -14,10 +14,13 @@
         text-align: center;
         padding-bottom: 50px;
     }
-    p1 {
+    .tab {
         color: black;
+        font-size: 120%;
         font-family: sans-serif;
-        text-align: center;
+        text-align: justify;
+        margin-left: 20%;
+        margin-right: 20%;
     }
 </style>
 
@@ -25,20 +28,21 @@
 <body>
 <script>
     var i = 0;
-    var text = "insert text about me";
+    var text = "Computer Science Student @ Carnegie Mellon";
     function typing() {
         if (i < text.length) {
             document.getElementById("intro").innerHTML += text.charAt(i);
             i++;
-            setTimeout(typing, 70);
+            setTimeout(typing, 90);
         }
     }
 </script>
-<div class="center_text" style="background-color:lightcoral">
+<div class="center_text" style="background-color:beige">
     <h1> Sophie Smith </h1>
     <p id="intro"><script> typing()</script></p>
 </div>
-<div class="main">
-    <p1> About Me. </p1>
-</div>
+<p class="tab"> Hello! I'm a rising Junior studying Computer Science at Carnegie Mellon University with a Concentration in Computer Systems. I'm both a Teaching Assistant for Computer Systems at Carnegie Mellon and a Research Assistant. Currently I'm an Explore Intern at Microsoft. <br> </p>
+
+<p class="tab"> Research... Projects... Resume...</p>
+
 </body>
