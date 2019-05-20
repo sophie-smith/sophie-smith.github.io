@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <style>
     h1 {
-        font-family: 'Lucida Sans';
+        font-family: 'Raleway', sans-serif;
         color: black;
         font-size: 260%;
         text-align: center;
@@ -9,7 +9,7 @@
     }
     p {
         color: teal;
-        font-family: 'Lucida Sans';
+        font-family: 'Raleway', sans-serif;
         font-size: 140%;
         text-align: center;
         padding-bottom: 50px;
@@ -17,7 +17,7 @@
     .tab {
         color: black;
         font-size: 120%;
-        font-family: 'Lucida Sans';
+        font-family: 'Raleway', sans-serif;
         text-align: justify;
         margin-left: 20%;
         margin-right: 20%;
@@ -26,22 +26,32 @@
     .button {
         color: black;
         font-size: 120%;
-        font-family: "Lucia Sans";
+        font-family: 'Raleway', sans-serif;
         text-align: center;
-
         padding: 1%;
         border-radius: 25px;
-        border: 2px solid black;
-        width: 100px;
+        border: 2px solid white;
+        width: 120px;
+        height:25px;
+        background:lightgray;
         margin-left: 40%;
+        text-decoration: none;
+    }
+    .button:hover {
+        background-color: teal;
+        opacity: 0.5;
     }
 </style>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200&display=swap" rel="stylesheet">
+</head>
 
 
 <body>
 <script>
     var i = 0;
-    var text = "Computer Science Student @ Carnegie Mellon";
+    var text = "computer science student @ carnegie mellon";
     function typing() {
         if (i < text.length) {
             document.getElementById("intro").innerHTML += text.charAt(i);
@@ -50,14 +60,14 @@
         }
     }
 </script>
-<div class="center_text" style="background-color:beige">
-    <h1> Sophie Smith </h1>
+<div class="center_text" style="background-color:lightgrey">
+    <h1> SOPHIE SMITH </h1>
     <p id="intro"><script> typing()</script></p>
 </div>
 <p class="tab"> Hello! I'm a rising Junior studying Computer Science at Carnegie Mellon University with a Concentration in Computer Systems. I'm both a Teaching Assistant for Computer Systems at Carnegie Mellon and a Research Assistant. Currently I'm an Explore Intern at Microsoft. <br> </p>
 
-<p class="button"> Research </p>
-<p class="button"> Projects </p>
-<p class="button"> Resume  </p>
+<p class="button" onclick="window.location.href = 'https://www.google.com';"> Research </p>
+<p class="button" onclick="window.location.href = 'https://www.google.com';"> Projects </p>
+<p class="button" onclick="window.location.href = 'https://www.google.com';"> Resume  </p>
 
 </body>
