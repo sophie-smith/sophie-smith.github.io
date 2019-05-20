@@ -14,28 +14,40 @@
         text-align: center;
         padding-bottom: 70px;
     }
+    .row p {
+        color: teal;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.5vw;
+        text-align: center;
+        padding-bottom: 1%;
+        float:left;
+        margin:1%;
+    }
+    .row {
+        margin-left: 26vw;
+        resize: both;
+    }
     .tab {
         color: black;
-        font-size: 120%;
+        font-size: 110%;
         font-family: 'Raleway', sans-serif;
         text-align: justify;
         margin-left: 25%;
         margin-right: 25%;
         line-height: 150%;
-        padding-bottom: 3%;
+        padding-bottom: 1%;
     }
     .button {
         color: black;
-        font-size: 120%;
+        font-size: 3vw;
         font-family: 'Raleway', sans-serif;
         text-align: center;
-        padding: 1%;
-        border: 2px solid white;
-        width: 120px;
-        height:25px;
+        border: 2vw solid white;
         background:lightgray;
-        margin-left: auto;
-        margin-right: auto;
+        padding-top: 1vw;
+        padding-bottom:2vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
         text-decoration: none;
     }
     .button:hover {
@@ -46,6 +58,7 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Raleway:200&display=swap" rel="stylesheet">
+    <meta name="viewport" content="initial-scale=1">
 </head>
 
 
@@ -66,9 +79,10 @@
     <p id="intro"><script> typing()</script></p>
 </div>
 <p class="tab"> Hello! I'm a rising Junior studying Computer Science at Carnegie Mellon University with an intended Concentration in Computer Systems. I'm a Teaching Assistant for Introduction to Computer Systems (15-213), as well as a Research Assistant for both the Center for Computational Analysis of Social and Organizational Systems (Institute for Software Research) and the CREATE Lab (Robotics Institute). <br> <br> I'm currently an Explorer Intern at Microsoft. Click on the buttons below to learn more about my work.</p>
-
-<p class="button" onclick="window.location.href = 'research.html';"> research </p>
-<p class="button" onclick="window.location.href = 'projects.html';"> projects </p>
-<p class="button" onclick="window.location.href = 'resume.pdf';"> résumé </p>
+<article class="row">
+    <p class="button" onclick="window.location.href = 'research.html';"> research </p>
+    <p class="button" onclick="window.location.href = 'projects.html';"> projects </p>
+    <p class="button" onclick="window.location.href = 'resume.pdf';"> résumé </p>
+</article>
 
 </body>
