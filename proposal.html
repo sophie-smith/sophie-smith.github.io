@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<style>
+    h1 {
+        font-family: 'Raleway', sans-serif;
+        color: black;
+        font-size: 3.5vw;
+        text-align: center;
+        padding-top: 5vw;
+        padding-bottom: 0vw;
+    }
+    p {
+        color: black;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.5vw;
+        text-align: center;
+    }
+    .tab {
+        color: black;
+        font-size: 1.25vw;
+        font-family: 'Raleway', sans-serif;
+        text-align: justify;
+        margin-left: 25%;
+        margin-right: 25%;
+        line-height: 150%;
+        padding-bottom: 1vw;
+    }
+    .button {
+        font-size: 1.5vw;
+        font-family: 'Raleway', sans-serif;
+        color: black;
+    }
+</style>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200&display=swap" rel="stylesheet">
+    <meta name="viewport" content="initial-scale=1">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140545452-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-140545452-1');
+    </script>
+
+</head>
+
+<div class="center_text" style="background-color:white">
+    <h1> Parallel Control Flow Graph Analysis </h1>
+    <p> Sophie Smith and Urvi Agrawal</p>
+</div>
+
+<body>
+    <p> <b> Summary </b> </p>
+    <p class="tab"> Program instrumentation and path analysis through control flow graphs are useful techniques to ensure the correctness of execution paths through code. Therefore, for this project, we’re planning on parallelizing a three-step process of creating the control flow graph for a given program, propagating state information and potential execution paths through the graph, and lastly instrumenting the original binary. We plan to implement this process on Xeon Phi Processors of CPUs using Open MP. </p>
+    <p> <b> Background </b> </p>
+    <p class="tab"> A control flow graph (CFG) is a directed graph representation of source code, indicating different potential execution paths throughout the code. CFGs are composed of vertices that indicate basic blocks of code (code segments where jump targets can exist at the beginning of this segment and jumps are allowed to leave from the end), and edges indicate potential changes in control flow allowed through the code. For security applications, CFGs are used to ensure attackers aren’t deliberately exploiting the code through changing the program flow to some unintended order.  </p>
+    <p class="tab"> The process of using CFGs for security assurance consists of three steps. The first consists of obtaining some representation of the source code and generating the CFG, a directed graph representing these execution paths through the code. After this, graph propagation algorithms are run to label the jumps and jump targets of the graph and also spread state information about different points of execution which can be used to later instrument the code. Lastly, using these preprocessing steps, the initial binary is instrumented so various safety checks are performed before any changes in the control flow.  </p>
+    <p> <b> The Challenge </b> </p>
+    <p class="tab"> The challenge with building the CFG is the inherent sequential nature of the algorithm and dependencies which exist. The traditional approach to performing this step is to sequentially iterate through code and build the directed graph as we iterate. To perform this in parallel becomes more challenging due to the interrelated nature of the different vertices and the unpredictable edges and links we have between the code blocks of the CFG.  </p>
+    <p class="tab"> The graph propagation step (transmitting information about the state and path of the CFG) is challenging as in terms of the problem size. This propagation begins from source nodes, which first we must identify, then as it reaches more nodes, the problem size potentially grows. Thus, the potential exponential increase in problem size is challenging as we need to identify where to both begin propagation from, and we also need to effectively parallelize across a changing problem size and in a problem where we begin with a very small number of items to parallelize. </p>
+    <p> <b> Resources </b> </p>
+    <p class="tab"> We plan to start from scratch with the implementation. We’ve found a couple of beneficial papers listing iterative algorithms for steps in the process including creating control flow graphs and for graph-based propagation. Thus, we plan on extending and parallelizing these algorithms to make them applicable to our use case. </p>
+    <p class="tab"> Resources to Use- </p>
+    <p class="tab"> https://www.cs.rice.edu/~keith/pubs/TR02-399.pdf </p>
+    <p class="tab"> https://link.springer.com/content/pdf/10.1007%2FBFb0025881.pdf</p>
+    <p> <b> Goals and Deliverables </b> </p>
+    <p class="tab"> Plan to Achieve- </p>
+    <p class="tab"> For this project, the two components we plan to achieve are generating the control flow graph (CFG) in parallel or at least parallelizing some components of its generation. Additionally, we wish to propagate the path and state information across this directed CFG in parallel. Achieving both these goals would be beneficial because, while CFG generating is a fairly specific application, our approach to parallelized graph propagation and even directed graph generation are applicable to a variety of other scenarios. </p>
+    <p class="tab"> Hope to Achieve- </p>
+    <p class="tab"> If we succeed in achieving the two prior optimizations, we hope to complete the project by adding an instrumentation application step. Since CFGs are used for ensuring safety of code execution, it would be exciting to see how our code either integrates well with previous instrumentation procedures or can simulate instrumentation. This would demonstrate the real-life applications of our project in the class. </p>
+    <p class="tab"> Describe Ideal Demo at Poster Session- </p>
+    <p class="tab"> We want our Demo/Poster to include the algorithms for parallelizing the CFG generation and state propagation, including graphs comparing these approaches to implementations of existing sequential algorithms and determine the speedup of our algorithms. We also hope to describe the integration of the preliminary steps (graph generation and propagation) into the final instrumentation approach and describe how this is applicable to real-life scenarios. </p>
+    <p> <b> Platform Choice </b> </p>
+    <p class="tab"> The majority of the codebase will be written in C++, although this is subject to change depending on whether we find libraries or existing implementations to integrate into our project. As for the API, we plan on using Open MP on Xeon Phi Processors on the Cluster machines. </p>
+    <p> <b> Schedule </b> </p>
+    <p class="tab"> Week of 11/4- </p>
+    <p class="tab"> Perform preliminary research to identify which components of the problem we want to parallelize and see if any existing solutions exist for these problems. We also plan to potentially discuss ideas with other Professors to see how feasible and useful our implementation may be. </p>
+    <p class="tab"> Week of 11/11- </p>
+    <p class="tab"> Finalize algorithm for parallelized CFG generation and implement this algorithm. Additionally either find a sequential implementation of this or implement a sequential version to serve as a baseline for optimization comparison.  </p>
+    <p class="tab"> Week of 11/18- </p>
+    <p class="tab"> Finalize algorithm for path state propagation and implement this algorithm on our previously defined control graph structure. Also potentially compare this implementation to a baseline sequential method. </p>
+    <p class="tab"> Week of 11/25- </p>
+    <p class="tab"> Determine how to handle the final step for instrumentation and whether we want to simulate this to achieve a sequential approach or if we should use a previously integrated instrumentation tool. Based on the decision at this point, we can follow through with that implementation during this week. </p>
+    <p class="tab"> Week of 12/2- </p>
+    <p class="tab"> Complete the final report and poster for the presentation the following week. Also, allow this time for any final adjustments to our previous implementations. </p>
+    <p class="tab"> Week of 12/09- </p>
+    <p class="tab"> Present our completed project. </p>
+</body>
