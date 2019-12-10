@@ -3,7 +3,7 @@
     h1 {
         font-family: 'Nanum Gothic', sans-serif;
         color: black;
-        font-size: 3vw;
+        font-size: 2.5vw;
         text-align: center;
         padding-top: 5vw;
         padding-bottom: 0vw;
@@ -46,45 +46,14 @@
 </head>
 
 <div class="center_text" style="background-color:white">
-    <h1> Parallel Object Tracking with Lucas-Kanade </h1>
+    <h1> Optical Flow Analysis with the Lucas-Kanade Algorithm </h1>
     <p> Sophie Smith and Urvi Agrawal</p>
 </div>
 
 <body>
-    <p> <b> Updates </b> </p>
-    <p class="tab"> Updated Checkpoint with Project Progress: <a href="418_Checkpoint.pdf"> link </a> </p>
+    <p> <b> Relevant Links </b> </p>
+    <p class="tab"> Checkpoint <a href="418_Checkpoint.pdf"> link </a> </p>
+    <p class="tab"> Final Report <a href="418_FinalReport.pdf"> link </a> </p>
     <p> <b> Summary </b> </p>
-    <p class="tab">The Lucas-Kanade method for understanding optical flow and object tracking across video frames has been commonly used in computer vision. The high-level algorithm is to iterate across frames of an image and, after selecting a specific set of pixels to track, determine the movement of this region via image filtering and matrix operations. For this project, we plan to parallelize the computations on these pixels to improve the speed at which frames can be processed.</p>
-    <p> <b> Background </b> </p>
-    <p class="tab">Optical flow is the concept of apparent flow or movement of objects in a scene and is often used for motion detection and object tracking in computer vision. Although various algorithms for tracking object movement exist, one popular approach is the Lucas-Kanade algorithm. This algorithm aims to estimate optical flow by solving a least-squares optimization problem in the local neighborhood of each pixel of interest. Specifically, this algorithm has been applied to object tracking across video sequences with good success.</p>
-    <p class="tab">The process for object tracking across videos is to first divide the video into individual image frames and selecting the object of interest to track (corresponding to a set of pixels). Then, iterating across sets of two consecutive frames, the idea is to begin with an estimated value for the distance each pixel moved across these frames. Then, iterating until convergence of the least-squares problem, the algorithm calculates the approximate pixel movement from looking at image intensity measurements in the neighborhood of each specific pixel. After this, the object location is updated and passed on as state to the prediction on the next frame. Upon iterating across all image frames, the algorithm produces an approximate guess for movement of the object of interest. </p>
-    <p> <b> The Challenge </b> </p>
-    <p class="tab">The challenge for parallelizing this loop comes from the inherent dependencies of each iteration of the Lucas-Kanade algorithm. Lucas-Kanade tracks the movement of a specified region or object across a series of consecutive frames from a video. By applying the algorithm to each frame, the goal is to compute the updated position of the object we’re tracking and to transfer information about this updated state to use when determining movement on the next frame. Thus, this iteration across the frames is inherently sequential, as we need to compute object placement on the frames in order of their execution. </p>
-    <p class="tab">The second dependency occurs with computations on each individual frame. This step, however, has significantly fewer dependencies and can be better parallelized. The work on each individual frame is structured as an optimization loop where the algorithm maintains a guess for the movement of pixels and tries to minimize the squared-loss between previous pixel locations and the updated location (based on the prediction of movement). To determine this squared loss, it involves applying filters on the image to compute the gradient (derivative) of the original image. To do this step, each pixel essentially needs to compute a weighted sum of the neighboring pixel values, thus, having dependencies on other information in the image. Additionally, since we are performing an optimization loop, the steps within each iteration of the loop must complete for each pixel before continuing to the next iteration. Therefore, we need to reason about synchronization across loops while still maintaining an efficient implementation. The actual implementation has more complexity associated with these pixel dependencies which will pose a challenge for efficient parallelization. </p>
-    <p> <b> Resources </b> </p>
-    <p class="tab">As a guideline for implementation, we have a sequential version of the algorithm implemented in Matlab (from Computer Vision class at CMU). This, however, has a lot of the complexity abstracted due to the use of library functions. Therefore, we plan to use a combination of this logic with research on the algorithm to implement the sequential algorithm. Upon completing the sequential algorithm, we’ve found some research papers describing various approaches to parallelizing the Lucas-Kanade algorithm which we plan on using for reference.</p>
-    <p class="tab"> Resources to Use- </p>
-    <p class="tab">https://jivp-eurasipjournals.springeropen.com/articles/10.1186/1687-5281-2014-18</p>
-    <p> <b> Goals and Deliverables </b> </p>
-    <p class="tab"> Plan to Achieve- </p>
-    <p class="tab">First, we plan to achieve an implementation of the sequential Lucas-Kanade algorithm in C++. After completing this step, we plan to parallelize this approach using the different frameworks discussed in class: Open MP, Message Passing and CUDA. After doing so, we can compare performance across the different frameworks and discuss the limitations of parallelizing this algorithm with each model.</p>
-    <p class="tab"> Hope to Achieve- </p>
-    <p class="tab">If we succeed in achieving the prior implementations, it would be interesting to try to parallelize the outer loop of iterating across each frame of the image. Although a lot of dependencies exist frame-to-frame, we could consider looking at similar optical flow algorithms or variations of Lucas-Kanade which more easily would allow us to parallelize this pipeline.</p>
-    <p class="tab"> Describe Ideal Demo at Poster Session- </p>
-    <p class="tab">We want our Demo/Poster to include the general algorithm for parallelizing Lucas-Kanade and discussions of the specific implementations in each of the frameworks. Additionally, we will include graphs comparing the performance of each framework to the sequential algorithm. We also will hopefully include videos of our successful object tracking for displaying to the audience.</p>
-    <p> <b> Platform Choice </b> </p>
-    <p class="tab">The codebase will be written in C++. For the API we plan on using Open MP, Cuda and Message Passing all on the same machines used for the assignments in this class.</p>
-    <p> <b> Schedule </b> </p>
-    <p class="tab"> Week of 11/4- </p>
-    <p class="tab">Completed this week. Involved preliminary research and changing our project idea.</p>
-    <p class="tab"> Week of 11/11- </p>
-    <p class="tab">Implement the sequential algorithm for Lucas-Kanade so that it works correctly on the sample videos we have for tracking applications. Additionally, take measurements on performance for the final result.</p>
-    <p class="tab"> Week of 11/18- </p>
-    <p class="tab">Implement the shared address space implementation of the algorithm, as well as the Cuda implementation. Record measurements on the performance of these different approaches as well.</p>
-    <p class="tab"> Week of 11/25- </p>
-    <p class="tab">Implement the message-passing version of our sequential algorithm. Record the performance of this approach as well. </p>
-    <p class="tab"> Week of 12/2- </p>
-    <p class="tab">Complete the final report and poster for the presentation the following week using the implementations and measurements made across the previous weeks. Also, allow this time for any final adjustments to our previous implementations.</p>
-    <p class="tab"> Week of 12/09- </p>
-    <p class="tab"> Present our completed project. </p>
+    <p class="tab"> For this project, we parallelized the Lucas-Kanade Algorithm for optical flow and object tracking across image frames. We evaluated different approaches to parallelism using CUDA, Open MP, and MPI on the GHC Cluster machines. We found approximately 9x speedup with our data-parallel shared address space implementation, 3x speedup with our asynchronous message-passing implementation, and 31x speedup with the CUDA approach. </p>
 </body>
