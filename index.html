@@ -1,115 +1,116 @@
 <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Istok+Web&family=Merriweather&family=Nunito&display=swap" rel="stylesheet">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140545452-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-140545452-1');
+</script>
 <style>
-    h1 {
-        font-family: 'Nanum Gothic', sans-serif;
-        color: black;
-        font-size: 3.5vw;
-        text-align: center;
-        padding-top: 1.5vw;
-        padding-bottom: 0vw;
+    * {
+        box-sizing: border-box;
     }
-    p {
-        color: teal;
-        font-family: 'Nanum Gothic', sans-serif;
-        font-size: 2vw;
-        text-align: center;
-        padding-bottom: 5vw;
+
+    body {
+        font-family: 'Istok Web', sans-serif;
+        margin: 0;
     }
-    .row p {
-        color: black;
-        font-family: 'Nanum Gothic', sans-serif;
-        font-size: 1.25vw;
-        text-align: center;
-        padding-bottom: 1%;
-        float:left;
-        margin:1%;
-    }
-    .row {
-        margin-left: 20vw;
-        resize: both;
-    }
-    .tab {
-        color: black;
-        font-size: 1.25vw;
-        font-family: 'Nanum Gothic', sans-serif;
-        text-align: justify;
-        margin-left: 25%;
-        margin-right: 25%;
-        line-height: 100%;
-        padding-bottom: 0.00%;
-    }
-    .button {
-        color: black;
-        font-size: 3vw;
-        font-family: 'Nanum Gothic', sans-serif;
-        text-align: center;
-        border: 2vw solid white;
-        background:white;
-        padding-top: 1vw;
-        padding-bottom:1vw;
-        padding-left: 2vw;
-        padding-right: 2vw;
-        text-decoration: none;
-    }
-    .button:hover {
-        background-color: lightgray;
-        opacity: 0.2;
-    }
-    .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 20%;
-        border-radius: 50%;
-    }
+
     .header {
-        padding-top: 5vw;
+        background: black;
+        color: white;
+        text-align: center;
+        padding: 80px;
+    }
+
+    #section {
+        font-size: 25px;
+        color: black;
+        font-family: 'Istok Web', sans-serif;
+    }
+
+    /* For different text sections */
+    #title {
+        font-size: 18px;
+        color: black;
+    }
+
+    #details {
+        font-size: 15px;
+        color: black;
+    }
+
+    #icon-left {
+        flex: 50%;
+        padding: 50px;
+    }
+
+    #icon-right {
+        flex: 50%;
+        padding: 50px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    /* Create the left column */
+    .left {
+        flex: 30%;
+        background-color: whitesmoke;
+        padding: 50px;
+    }
+
+    /* Create the right column */
+    .right {
+        flex: 70%;
+        background-color: whitesmoke;
+        padding: 50px;
     }
 
 </style>
-
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:200&display=swap" rel="stylesheet">
-    <meta name="viewport" content="initial-scale=1">
-    <head>
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:200&display=swap" rel="stylesheet">
-    <meta name="viewport" content="initial-scale=1">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140545452-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-140545452-1');
-    </script>
-
-</head>
 </head>
 
-
-<body>
-<script>
-    var i = 0;
-    var text = "computer science student @ carnegie mellon";
-    function typing() {
-        if (i < text.length) {
-            document.getElementById("intro").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typing, 75);
-        }
-    }
-</script>
-<div class="header">
-    <img src="picture.jpg" class="center" >
-</div>
-<div class="center_text" style="background-color:white">
-    <h1> SOPHIE SMITH </h1>
-</div>
 <div class="row">
-    <p class="button" onclick="window.location.href = 'about.html';"> about me </p>
-    <p class="button" onclick="window.location.href = 'experience.html';"> experience </p>
-    <p class="button" onclick="window.location.href = 'projects.html';"> projects </p>
-    <p class="button" onclick="window.location.href = 'resume.pdf';"> résumé </p>
+    <div class="left">
+        <img src="profile.jpg" style="width:100%">
+        <h1> <b> Sophie Smith </b> </h1>
+        <p> Computer Science at Carnegie Mellon University </p>
+        <p> sophiesm@andrew.cmu.edu </p>
+        <p> Interests: parallel computing, operating systems, cloud computing </p>
+        <div class="row">
+            <div class="icon-left"><a href="resume.pdf"><img src="https://img.icons8.com/ios/50/000000/open-resume.png" style="height:40px;width: 40px;"/></a></div>
+            <div class="icon-right"><a href="https://github.com/sophie-smith"><img src="https://img.icons8.com/wired/64/000000/github.png" style="height:40px;width: 40px;"/></a></div>
+        </div>
+    </div>
+    <div class="right">
+        <h1 id="section"> About Me </h1>
+        <p> Welcome! I’m a rising Senior studying Computer Science with a concentration in Computer Systems at Carnegie Mellon University. After graduation, I’m planning on pursuing a Master’s in Computer Science at CMU and will be looking for Summer 2021 internships. </p>
+        <h1 id="section"> Relevant Courses </h1>
+        <p> (Spring 2020) 15-410: Operating Systems, 15-451: Algorithm Design and Analysis <br> (Fall 2019) 15-418: Parallel Computer Architecture and Programming, 15-330: Computer Security, 15-316: Software Foundations of Security and Privacy <br> (Spring 2019) 10-315: Intro to ML, 16-385: Computer Vision </p>
+        <h1 id="section"> Experience </h1>
+        <p id="title"> <b> Software Engineering Intern at Microsoft </b> </p>
+        <p id="details"> Media Pipeline and Codecs Team, SiGMa, Azure Cosine <br> May 2020 - August 2020 </p>
+
+        <p id="title"> <b>Explorer Intern at Microsoft</b> </p>
+        <p id="details"> System Center Configuration Manager Engineering Team, Experiences and Devices <br> May 2019 - August 2019 </p>
+
+        <p id="title"> <b>Teaching Assistant at Carnegie Mellon University</b> </p>
+        <p id="details"> Introduction to Computer Systems: 15-213/18-213/15-513/18-613 <br> Spring 2019, Fall 2020, Summer 2020 </p>
+
+        <p id="title"> <b>Research Assistant at Carnegie Mellon University</b> </p>
+        <p id="details"> Optimization, Probability and Learning Lab <br> December 2019 - Present <br> Focus: coding theory, distributed systems, cloud computing </p>
+        <p id="details"> CREATE Lab <br> May 2018 - June 2019 <br> Focus: artificial intelligence education </p>
+        <p id="details"> Center for Computational Analysis of Social and Organizational Systems <br> September 2018 - May 2019 <br> Focus: fake news, information propagation </p>
+        <h1 id="section"> Projects </h1>
+        <p id="title"> Parallel Lucas-Kanade Optical Flow Tracking </p>
+        <p id="details"> Final project for 15-418. <a href="proposal.html">More details.</a> </p>
 </div>
 
-</body>
+</html>
