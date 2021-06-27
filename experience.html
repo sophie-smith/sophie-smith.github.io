@@ -1,66 +1,130 @@
 <!DOCTYPE html>
-<style>
-    h1 {
-        font-family: 'Nanum Gothic', sans-serif;
-        color: black;
-        font-size: 3.5vw;
-        text-align: center;
-        padding-top: 5vw;
-        padding-bottom: 0vw;
-    }
-    p {
-        color: black;
-        font-family: 'Nanum Gothic', sans-serif;
-        font-size: 1.5vw;
-        text-align: center;
-    }
-    .tab {
-        color: black;
-        font-size: 1.25vw;
-        font-family: 'Nanum Gothic', sans-serif;
-        text-align: justify;
-        margin-left: 25%;
-        margin-right: 25%;
-        line-height: 150%;
-        padding-bottom: 1vw;
-    }
-    .button {
-        font-size: 1.5vw;
-        font-family: 'Nanum Gothic', sans-serif;
-        color: black;
-    }
-</style>
-
+<html>
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:200&display=swap" rel="stylesheet">
-    <meta name="viewport" content="initial-scale=1">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140545452-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-140545452-1');
-    </script>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300&display=swap" rel="stylesheet">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140545452-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-140545452-1');
+</script>
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
+    body {
+        font-family: 'Catamaran', sans-serif;
+        margin: 0;
+    }
+
+    h1 {
+        color: maroon;
+    }
+
+    .header {
+        background: maroon;
+        color: white;
+        text-align: center;
+        padding: 80px;
+    }
+
+    #section {
+        font-size: 25px;
+        color: black;
+        font-family: 'Catamaran', sans-serif;
+    }
+
+    /* For different text sections */
+    #title {
+        font-size: 18px;
+        color: maroon;
+    }
+
+    #subtitle {
+        font-size: 15px;
+        color: maroon;
+    }
+
+    #lefttext {
+        padding-left: 42px;        
+        vertical-align: text-top;
+        padding-top: 0px;
+    }
+
+    #leftlogo {
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 50px;
+        float: left;
+        width: 100%;
+    }
+
+    /* Create the left column */
+    .left {
+        flex: 30%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    /* Create the right column */
+    .right {
+        flex: 70%;
+        background-color: white;
+        padding: 50px;
+    }
+
+    .leftphoto {
+        padding: 5px;
+        float: left;
+        width: 50%;
+    }
+
+    .rightphoto {
+        padding: 5px;
+        float: left;
+        width: 50%;
+    }
+
+    a:link {
+        text-decoration: none;
+        color: maroon;
+    }
+
+    a:visited {
+        text-decoration: none;
+        color: teal;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: teal;
+    }
+
+    a:active {
+        text-decoration: none;
+        color: teal;
+    }
+
+</style>
 </head>
 
-<div class="center_text" style="background-color:white">
-    <h1>EXPERIENCE</h1>
+<div class="row">
+    <div class="row">
+        <h1 id="title"> <b>COMING SOON</b></h1>
+        
+    </div>
+
 </div>
 
-<body>
-    <p> <b> Incoming Software Engineering Intern @ Microsoft, May 2020 </b> </p>
-    <p class="tab"> Intern on Azure Cosine (Core OS and Intelligent Edge) </p>
-    <p> <b> Explorer Intern @ Microsoft, May 2019 - August 2019 </b> </p>
-    <p class="tab"> Worked as an intern on the OS Deployment subteam of the System Center Configuration Manager Engineering Team. Main responsibilities included software engineering and project management tasks to improve accessibility and user experience in the Task Sequence Editor (sub-component of software used by IT Administrators to manage distributed systems). </p>
-    <p> <b> Teaching Assistant (15-213/18-213/18-613), January 2019 - Present </b> </p>
-    <p class="tab"> Worked as a teaching assistant for introductory computer systems course at Carnegie Mellon University. Roles included leading recitation and review sessions for graduate and undergraduate students to review important course material with students, holding office hours to help on homework assignments and conceptual questions, writing exam questions and helping with other course infrastructure related tasks. </p>
-    <p> <b> Research Assistant @ CASOS, May 2018 - June 2019 </b></p>
-    <p class="tab"> Used machine learning models including label propagation and graph convolutional neural networks to analyze the diffusion patterns of misinformation on Twitter. Focused on optimizing baseline algorithms by forming a network of users via mentions, retweets, quotes and replies and by also considering tweet meta-data for misinformation classification rates.  </p>
-    <p> <b> Research Assistant @ CREATE Lab, Sept. 2018 - May 2019 </b> </p>
-    <p class="tab"> Helped to transcribe interviews by artificial intelligence experts to create a virtual archive of their opinions of AI developments and the ethics of AI in the field. Worked to create a virtual archive of videos for use by students and professionals, specifically for a Carnegie Mellon University introductory ethics and writing course on atificial intelligence and its impact on society. </p>
-    <article class="row">
-        <p class="button" onclick="window.location.href = 'index.html';"> (back) </p>
-    </article>
-</body>
+</html>
